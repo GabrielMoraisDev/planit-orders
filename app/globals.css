@@ -1,0 +1,30 @@
+@import "tailwindcss";
+
+@theme inline{
+  --color-primary-00: #5F1A36;
+  --color-primary-10: #7B2542;
+  --color-accent-00: #C31A5F;
+  --color-accent-10: #E91E63;
+  --color-background-00: #fff;
+}
+
+body {
+  font-family: 'Poppins', Arial, Helvetica, sans-serif;
+  background-color: #fff
+}
+
+/* Utilities */
+.container {
+  max-width: 72rem;
+}
+
+/* Gradients */
+.gradient-header {
+  background: linear-gradient(135deg, #a855f7 0%, #ec4899 50%, #f472b6 100%);
+}
+
+.gradient-accent {
+  background: linear-gradient(135deg, #7c3aed 0%, #db2777 100%);
+}
+
+
