@@ -1,5 +1,6 @@
 "use client";
 import { ArrowRight, Clock, Tag } from 'react-bootstrap-icons';
+import { useState } from 'react';
 import type { Product } from '@/app/types';
 import { useCart } from '@/app/context/CartContext';
 import { useRouter } from 'next/navigation';
@@ -12,13 +13,21 @@ type ProductCardProps = {
 export default function ProductCard({ product }: ProductCardProps) {
   const { addItem } = useCart();
   const router = useRouter();
+  const [isLoading, setIsLoading] = useState(false);
 
   const handleAddToCart = () => {
+    // show quick loading feedback so the user doesn't think the app travou
+    setIsLoading(true);
     if (product.variacoes && product.variacoes.length > 0) {
+      // navigate to product page (will unmount this component)
       router.push(`/products/${product.id}`);
-    } else {
-      addItem(product, 1);
+      return;
     }
+
+    // add to cart then hide loading shortly after
+    addItem(product, 1);
+    // keep loading visible briefly so the user perceives feedback
+    setTimeout(() => setIsLoading(false), 350);
   };
 
   return (
@@ -75,9 +84,21 @@ export default function ProductCard({ product }: ProductCardProps) {
           <div className="bg-red-400 flex-place-items-center justify-center"></div>
           <button
             onClick={handleAddToCart}
-            className="mt-1 m-auto flex place-items-center justify-center gap-1 w-[90%] py-2 rounded-full font-light text-white bg-primary-00 hover:bg-primary-10 transition-all duration-300 text-sm"
+            disabled={isLoading}
+            className={
+              `mt-1 m-auto flex place-items-center justify-center gap-1 w-[90%] py-2 rounded-full font-light text-white bg-primary-00 hover:bg-primary-10 transition-all duration-300 text-sm` +
+              (isLoading ? ' opacity-60 cursor-not-allowed' : '')
+            }
           >
-            Adicionar <ArrowRight/>
+            {isLoading ? (
+              <>
+                <Clock className="animate-spin" /> Carregando...
+              </>
+            ) : (
+              <>
+                Adicionar <ArrowRight/>
+              </>
+            )}
           </button>
         </div>
       </div>

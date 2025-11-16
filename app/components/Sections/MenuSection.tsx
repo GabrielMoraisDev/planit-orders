@@ -18,9 +18,9 @@ export function MenuSection() {
     });
   }, [query, categoria]);
 
-  const categoriasSelecionada = categoria 
-    ? categorias.find(c => c.value === categoria)?.label 
-    : 'Todos os Produtos';
+  // const categoriasSelecionada = categoria 
+  //   ? categorias.find(c => c.value === categoria)?.label 
+  //   : 'Todos os Produtos';
 
   return (
     <>
@@ -87,7 +87,7 @@ export function MenuSection() {
           </div>
         )}
       </section>
-      <div className="h-72"></div>
+      <div className="h-20"></div>
     </>
   );
 }
