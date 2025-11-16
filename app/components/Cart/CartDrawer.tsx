@@ -122,7 +122,7 @@ export default function CartDrawer() {
             <span className="text-sm text-zinc-600">Total</span>
             <span className="text-lg font-semibold">R$ {total.toFixed(2).replace('.', ',')}</span>
           </div>
-          <button className="w-full rounded-lg bg-purple-600 text-white py-3 font-medium hover:bg-purple-700">
+          <button className="w-full rounded-lg bg-green-600 text-white py-3 font-medium hover:bg-green-700">
             Finalizar Pedido
           </button>
           <button

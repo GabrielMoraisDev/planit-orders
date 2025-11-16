@@ -126,7 +126,7 @@ export default function ProductVariationsPage() {
         <div className="max-w-4xl mx-auto">
           <button
             onClick={() => router.back()}
-            className="mb-4 p-2 hover:bg-white hover:bg-opacity-20 rounded-full transition inline-flex items-center gap-2"
+            className="ml-4 mb-3 p-2 hover:bg-white hover:bg-opacity-20 rounded-full transition inline-flex items-center gap-2"
           >
             <ArrowLeft size={24} />
             <span>Voltar</span>
